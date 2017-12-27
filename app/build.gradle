@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.pfariasmunoz.weatherapp"
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_v"
+    // Anko Commons
+    implementation "org.jetbrains.anko:anko-commons:$anko_v"
+    implementation "org.jetbrains.anko:anko-sqlite:$anko_v"
+    // Anko Coroutines
+    implementation "org.jetbrains.anko:anko-coroutines:$anko_v"
+    // Coroutine listeners for Anko Layouts
+    implementation "org.jetbrains.anko:anko-sdk25-coroutines:$anko_v"
+    implementation "org.jetbrains.anko:anko-appcompat-v7-coroutines:$anko_v"
+    // Design
+    //implementation "org.jetbrains.anko:anko-design:$anko_version"
+    implementation "org.jetbrains.anko:anko-design-coroutines:$anko_v"
+
+    implementation "com.android.support:appcompat-v7:$support_v"
+    implementation "com.android.support:recyclerview-v7:$support_v"
+    implementation "com.android.support.constraint:constraint-layout:$constraint_layout_v"
+    implementation "com.google.code.gson:gson:$gson_v"
+    implementation "com.squareup.picasso:picasso:$picasso_v"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation "junit:junit:$junit_v"
+    //testImplementation "org.mockito:mockito-core:$mockito_v"
+    testImplementation "org.mockito:mockito-inline:$mockito_v"
+
+    // Espresso
+    androidTestImplementation "com.android.support:support-annotations:$support_v"
+    androidTestImplementation "com.android.support.test:runner:$test_runner_v"
+    androidTestImplementation "com.android.support.test:rules:$test_runner_v"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_v"
+    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:$espresso_v") {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
+
+}
